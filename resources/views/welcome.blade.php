@@ -3,49 +3,55 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Dashboard - Administrator Portal</title>
-    <link rel="stylesheet" href="../css/bootstrap.css">
-    <link rel="stylesheet" href="../css/style.css">
+    <title>Sign In - Gaming Portal</title>
+    <link rel="stylesheet" href="resources/css/bootstrap.css">
+    <link rel="stylesheet" href="resources/css/style.css">
   </head>
   <body>
    
-   <nav class="navbar navbar-expand-lg sticky-top bg-primary navbar-dark">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">Administrator Portal</a>
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          
-         <li><a href="admins.html" class="nav-link px-2 text-white">List Admins</a></li>
-         <li><a href="users.html" class="nav-link px-2 text-white">List Users</a></li>
-         <li class="nav-item">
-           <a class="nav-link active bg-dark" href="#">Welcome, Administrator</a>
-         </li> 
-         <li class="nav-item">
-          <a href="../signin.html" class="btn bg-white text-primary ms-4">Sign Out</a>
-         </li>
-       </ul> 
-      </div>
-    </nav>
-
-    <main>
-
-      <div class="hero py-5 bg-light">
-         <div class="container text-center">
-          <h1 class="mb-0 mt-0">Dashboard</h1>
-         </div>
-      </div>
-
-      <div class="list-form py-5">
+   <main>
+      <section class="login">
          <div class="container">
-          <h5 class="alert alert-info">
-            Welcome, Administrator. Don't forget to sign out when you are finished using this page
-          </h5>
-         </div>
-      </div>
-      
-    </main>
-   
+            <div class="row justify-content-center">
+               <div class="col-lg-5 col-md-6">
+                  <h1 class="text-center mb-4">Gaming Portal</h1>
+                  <div class="card card-default">
+                     <div class="card-body">
+                        <h3 class="mb-3">Sign In</h3>
+                        
+                        <form action="Administrator Portal/index.html"> 
+                           <!-- s: input -->
+                           <div class="form-group my-3">
+                              <label for="username" class="mb-1 text-muted">Username</label>
+                              <input type="text" id="username" name="username" value="" class="form-control" autofocus />
+                           </div> 
 
-    <script src="../js/bootstrap.js"></script>
-    <script src="../js/popper.js"></script>
+                           <!-- s: input -->
+                           <div class="form-group my-3">
+                              <label for="password" class="mb-1 text-muted">Password</label>
+                              <input type="password" id="password" name="password" value="" class="form-control" />
+                           </div>
+                           
+                           <div class="mt-4 row">
+                              <div class="col">
+                                 <button type="submit" class="btn btn-primary w-100">Sign In</button>
+                              </div>
+                              <div class="col">
+                                 <a href="Gaming Portal/signup.html" class="btn btn-danger w-100">Sign up</a>
+                              </div>
+                              
+                           </div>
+                        </form>
+
+                     </div>
+                  </div> 
+               </div>
+            </div>
+         </div>
+      </section>
+   </main>
+
+    <script src="./js/bootstrap.js"></script>
+    <script src="./js/popper.js"></script>
   </body>
 </html>
