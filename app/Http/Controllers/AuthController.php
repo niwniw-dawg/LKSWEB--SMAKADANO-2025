@@ -26,7 +26,7 @@ class AuthController extends Controller
             // jika user nya memiliki level pengembang
             if($user->level =='1'){
                 // arahkan ke halaman pengembang ya :P
-                return redirect()->intended('admin');
+                return redirect()->intended('dev');
             }
            
               // jika user nya memiliki level user
