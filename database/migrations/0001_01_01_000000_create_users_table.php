@@ -35,7 +35,6 @@ return new class extends Migration
             $table->longText('payload');
             $table->integer('last_activity')->index();
         });
-<<<<<<< HEAD
         
         Schema::create('users', function (Blueprint $table) {
             $table->id();
@@ -47,10 +46,6 @@ return new class extends Migration
     }
 
 
-=======
-    }
-
->>>>>>> origin/master
     /**
      * Reverse the migrations.
      */

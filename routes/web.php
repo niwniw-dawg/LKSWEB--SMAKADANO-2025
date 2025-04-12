@@ -1,52 +1,20 @@
 <?php
 
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\UserController;
-use App\Models\User;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', function () {
+    return view('welcome');
+});
 
-Route::get('dashboard', function () {
+Route::get('/dashboard', function () {
     return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('login', function () {
-    return view('login');
-});
-
-Route::get('dashboard', function () {
-    return view('dashboard');
-});
-
-// metode nya get lalu masukkan namespace AuthController 
-// attribute name merupakan penamaan dari route yang kita buat
-// kita tinggal panggil fungsi route(name) pada layout atau controller
-Route::get('/', [AuthController::class,'index'])->name('login');
-Route::get('register', [AuthController::class,'register'])->name('register');
-Route::post('proses_login', [AuthController::class,'proses_login'])->name('proses_login');
-Route::get('logout', [AuthController::class,'logout'])->name('logout');
-Route::post('proses_register',[AuthController::class,'proses_register'])->name('proses_register');
-
-// kita atur juga untuk middleware menggunakan group pada routing
-// didalamnya terdapat group untuk mengecek kondisi login
-// jika user yang login merupakan admin maka akan diarahkan ke AdminController
-// jika user yang login merupakan user biasa maka akan diarahkan ke UserController
-Route::group(['middleware' => ['auth']], function () {
-    Route::group(['middleware' => ['cek_login:admin']], function () {
-        Route::resource('admin', AdminController::class);
-    });
-    Route::group(['middleware' => ['cek_login:user']], function () {
-        Route::resource('user', UserController::class);
-    });
-});
+require __DIR__.'/auth.php';
